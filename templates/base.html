@@ -137,7 +137,7 @@
       <div class="navigation w-100">
         <div class="container">
           <nav class="navbar navbar-expand-lg navbar-dark p-0">
-            <a class="navbar-brand" href="index.html"
+            <a class="navbar-brand" href="{% url 'home' %}"
               ><img src="{% static 'images/logo.png' %}" alt="logo"
             /></a>
             <button
@@ -154,20 +154,25 @@
 
             <div class="collapse navbar-collapse" id="navigation">
               <ul class="navbar-nav ml-auto text-center">
-                <li class="nav-item @@home">
-                  <a class="nav-link" href="index.html">Home</a>
+                {% url 'home' as url %}
+                <li class="nav-item {% if request.path == url %}active{% endif %}">
+                  <a class="nav-link" href="{{ url }}">Home</a>
                 </li>
-                <li class="nav-item @@about">
-                  <a class="nav-link" href="about.html">About</a>
+                {% url 'about' as url %}
+                <li class="nav-item {% if request.path == url %}active{% endif %}">
+                  <a class="nav-link" href="{{ url }}">About</a>
                 </li>
-                <li class="nav-item @@courses">
-                  <a class="nav-link" href="courses.html">COURSES</a>
+                {% url 'courses' as url %}
+                <li class="nav-item {% if request.path == url %}active{% endif %}">
+                  <a class="nav-link" href="{{url}}">COURSES</a>
                 </li>
-                <li class="nav-item @@events">
-                  <a class="nav-link" href="events.html">EVENTS</a>
+                {% url 'events' as url%}
+                <li class="nav-item {% if request.path == url %}active{% endif %}">
+                  <a class="nav-link" href="{{url}}">EVENTS</a>
                 </li>
-                <li class="nav-item @@blog">
-                  <a class="nav-link" href="blog.html">BLOG</a>
+                {% url 'blogs' as url %}
+                <li class="nav-item {% if request.path == url %}active{% endif %}">
+                  <a class="nav-link" href="{{url}}">BLOG</a>
                 </li>
                 <li class="nav-item dropdown view">
                   <a
@@ -251,8 +256,9 @@
                     </li>
                   </ul>
                 </li>
-                <li class="nav-item @@contact">
-                  <a class="nav-link" href="contact.html">CONTACT</a>
+                {% url 'contact' as url %}
+                <li class="nav-item {% if request.path == url %}active{% endif %}">
+                  <a class="nav-link" href="{{url}}">CONTACT</a>
                 </li>
               </ul>
             </div>
@@ -260,7 +266,11 @@
         </div>
       </div>
     </header>
-
+      <!-- preloader start -->
+        <div class="preloader">
+          <img src="{% static 'images/preloader.gif' %}" alt="preloader">
+        </div>
+      <!-- preloader end -->
     {% block content %}
     
     {% endblock content %}
