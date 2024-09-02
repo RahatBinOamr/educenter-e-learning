@@ -7,3 +7,6 @@ def views_courses (request):
 
 def views_events (request):
   return render(request,'events.html')
+
+def views_teachers(request):
+  return render(request,'teachers.html')

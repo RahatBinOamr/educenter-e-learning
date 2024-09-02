@@ -92,21 +92,21 @@
                 <li class="list-inline-item">
                   <a
                     class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block"
-                    href="notice.html"
+                    href="{% url 'notices' %}"
                     >notice</a
                   >
                 </li>
                 <li class="list-inline-item">
                   <a
                     class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block"
-                    href="research.html"
+                    href="{% url 'research' %}"
                     >research</a
                   >
                 </li>
                 <li class="list-inline-item">
                   <a
                     class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block"
-                    href="scholarship.html"
+                    href="{% url 'scholarship' %}"
                     >SCHOLARSHIP</a
                   >
                 </li>
@@ -188,7 +188,7 @@
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <li>
-                      <a class="dropdown-item" href="teacher.html">Teacher</a>
+                      <a class="dropdown-item" href="{% url 'teachers' %}">Teacher</a>
                     </li>
                     <li>
                       <a class="dropdown-item" href="teacher-single.html"
@@ -196,7 +196,7 @@
                       >
                     </li>
                     <li>
-                      <a class="dropdown-item" href="notice.html">Notice</a>
+                      <a class="dropdown-item" href="{% url 'notices' %}">Notice</a>
                     </li>
                     <li>
                       <a class="dropdown-item" href="notice-single.html"
@@ -204,10 +204,10 @@
                       >
                     </li>
                     <li>
-                      <a class="dropdown-item" href="research.html">Research</a>
+                      <a class="dropdown-item" href="{% url 'research' %}">Research</a>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="scholarship.html"
+                      <a class="dropdown-item" href="{% url 'scholarship' %}"
                         >Scholarship</a
                       >
                     </li>
