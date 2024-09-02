@@ -45,6 +45,13 @@
     <!--Favicon-->
     <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon" />
     <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon" />
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+{% block script %}
+
+{% endblock script %}
   </head>
   <body>
     <header class="fixed-top header">
@@ -110,24 +117,30 @@
                     >SCHOLARSHIP</a
                   >
                 </li>
+                {% if  request.user.is_authenticated %}
+                
                 <li class="list-inline-item">
                   <a
                     class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block"
-                    href="#loginModal"
-                    data-toggle="modal"
-                    data-target="#loginModal"
-                    >login</a
-                  >
+                    href="{% url 'logout' %}">logout</a>
+                </li>
+                {% else %}
+                <li class="list-inline-item">
+                  <a
+                    class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block"
+                    href="{% url 'login' %}">
+                    login
+                    </a>
                 </li>
                 <li class="list-inline-item">
                   <a
                     class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block"
-                    href="#signupModal"
-                    data-toggle="modal"
-                    data-target="#signupModal"
-                    >register</a
-                  >
+                    href="{% url 'register' %}">
+                    Register
+                    </a>
                 </li>
+                {% endif %}
+
               </ul>
             </div>
           </div>
@@ -477,5 +490,22 @@
 
     <!-- Main Script -->
     <script src="{% static 'js/script.js' %}"></script>
+    <script>
+    $(document).ready(function(){
+        {% if messages %}
+            {% for message in messages %}
+                var backgroundColor = "{{ message.tags }}" === "error" ? "red" : ""; // Set background color based on message type
+                Toastify({
+                    text: "{{ message }}",
+                    duration: 2000,
+                    close: true,
+                    gravity: "top", // 'top' or 'bottom'
+                    position: 'right', // 'left', 'right', 'center'
+                    backgroundColor: backgroundColor, // Apply the background color
+                }).showToast();
+            {% endfor %}
+        {% endif %}
+    });
+    </script>
   </body>
 </html>
