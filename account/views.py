@@ -34,3 +34,4 @@ def login_view(request):
 def custom_logout_view(request):
     logout(request)
     return redirect('home') 
+
