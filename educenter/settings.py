@@ -31,7 +31,7 @@ INSTALLED_APPS = [
     'blogs',
     'partial',
     'account',
-
+    'chatbot',
     'tinymce',
 ]
 

@@ -10,6 +10,7 @@ urlpatterns = [
     path('',include('blogs.urls')),
     path('',include('partial.urls')),
     path('',include('account.urls')),
+    path('',include('chatbot.urls')),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
