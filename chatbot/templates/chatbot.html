@@ -147,56 +147,53 @@
             "cost of"
         ];
 
-        // Function to display a welcome message when the page loads
         window.onload = function() {
             const chatbox = document.getElementById("chatbox");
             chatbox.innerHTML += `<div class="message bot"> Welcome! How can I assist you today?</div>`;
         };
 
-        // Function to show suggestions based on user input
         function showSuggestions() {
             const input = document.getElementById("user-input").value.toLowerCase();
             const suggestionsBox = document.getElementById("suggestions");
-            suggestionsBox.innerHTML = ''; // Clear previous suggestions
+            suggestionsBox.innerHTML = ''; 
 
             if (input) {
                 const filteredQuestions = questions.filter(q => q.toLowerCase().includes(input));
                 if (filteredQuestions.length > 0) {
-                    suggestionsBox.style.display = 'block'; // Show suggestions
+                    suggestionsBox.style.display = 'block'; 
                     filteredQuestions.forEach(q => {
                         const suggestionElement = document.createElement("div");
                         suggestionElement.className = "suggestion";
                         suggestionElement.innerText = q;
                         suggestionElement.onclick = () => {
-                            document.getElementById("user-input").value = q; // Set input to selected suggestion
-                            suggestionsBox.style.display = 'none'; // Hide suggestions
+                            document.getElementById("user-input").value = q; 
+                            suggestionsBox.style.display = 'none'; 
                         };
                         suggestionsBox.appendChild(suggestionElement);
                     });
                 } else {
-                    suggestionsBox.style.display = 'none'; // Hide if no suggestions
+                    suggestionsBox.style.display = 'none'; 
                 }
             } else {
-                suggestionsBox.style.display = 'none'; // Hide if input is empty
+                suggestionsBox.style.display = 'none';
             }
         }
 
-        // Function to handle sending messages to the chatbot
         function sendMessage() {
             const message = document.getElementById("user-input").value;
-            if (message.trim() === "") return; // Prevent sending empty messages
+            if (message.trim() === "") return; 
             
             const chatbox = document.getElementById("chatbox");
             chatbox.innerHTML += `<div class="message user"> ${message}</div>`;
-            chatbox.scrollTop = chatbox.scrollHeight; // Scroll to bottom
+            chatbox.scrollTop = chatbox.scrollHeight; 
 
             fetch(`/chatbot/?message=${message}`)
                 .then(response => response.json())
                 .then(data => {
                     chatbox.innerHTML += `<div class="message bot"> ${data.response}</div>`;
-                    chatbox.scrollTop = chatbox.scrollHeight; // Scroll to bottom
-                    document.getElementById("user-input").value = ''; // Clear input field
-                    document.getElementById("suggestions").style.display = 'none'; // Hide suggestions after sending
+                    chatbox.scrollTop = chatbox.scrollHeight;
+                    document.getElementById("user-input").value = '';
+                    document.getElementById("suggestions").style.display = 'none';
                 });
         }
     </script>

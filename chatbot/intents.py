@@ -1,4 +1,3 @@
-# chatbot/intents.py
 
 INTENTS = {
 

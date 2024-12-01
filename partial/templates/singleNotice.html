@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}
+{{notice.title}}
+{% endblock title %}
+{% block content %}
+<section class="section mt-5 ">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="d-flex">
+          <div class="text-center mr-4">
+            <div class="p-4 bg-primary text-white">
+                <span class="h2 d-block">30</span> APR,2019
+            </div>
+          </div>
+          <!-- notice content -->
+          <div>
+            <h3 class="mb-4"> {{notice.title}} </h3>
+            <p>{{notice.description |safe}} </p>
+            <ul class="list-styled mb-5">
+              <li>Digital Access to Scholarship at Smart</li>
+              <li>institutes</li>
+              <li>Smart-affiliated hospitals and research</li>
+              <li>Smart Catalyst</li>
+              <li>Smart Library Portal</li>
+              <li>Smart research programs and departments</li>
+            </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}

@@ -1,9 +1,18 @@
 from django.shortcuts import render
-
+from .models import Notice
 # Create your views here.
 def view_notices(request):
-  return render(request, 'notices.html')
-
+  notices = Notice.objects.all()
+  context ={
+    "notices":notices
+  }
+  return render(request, 'notices.html',context)
+def singe_notices(request,slug):
+  notice = Notice.objects.get(slug=slug)
+  context ={
+    "notice":notice
+  }
+  return render(request, 'singleNotice.html', context)
 def view_research(request):
   return render(request, 'research.html')
 

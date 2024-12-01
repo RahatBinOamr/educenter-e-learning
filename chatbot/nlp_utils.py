@@ -1,4 +1,3 @@
-# chatbot/nlp_utils.py
 
 from chatbot.intents import INTENTS
 from .models import Intent
