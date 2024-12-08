@@ -74,6 +74,17 @@ class Modules(models.Model):
   created = models.DateTimeField(auto_now_add=True)
   updated = models.DateTimeField(auto_now=True)
 
+
+  def get_video_embed_url(self):
+        """Convert standard YouTube URL to embed URL."""
+        if "youtube.com/watch?v=" in self.content:
+            video_id = self.content.split("watch?v=")[-1]
+            return f"https://www.youtube.com/embed/{video_id}"
+        elif "youtu.be/" in self.content:
+            video_id = self.content.split("youtu.be/")[-1]
+            return f"https://www.youtube.com/embed/{video_id}"
+        return self.content
+
   def __str__(self) -> str:
     return f"module title-{self.title}"
   
